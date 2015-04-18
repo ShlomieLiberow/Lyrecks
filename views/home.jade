@@ -28,8 +28,9 @@ html
         Navigation Bar 
     .jumbotron
       legend Enter name of artist and song
-      .form-group
-        .col-lg-10
-          input#inputName.form-control(type='text', placeholder='Ready to discover?')
-      p
-        a.btn.btn-primary.btn-lg(href='about') Start
+      form.form-horizontal(action='/',method='POST')
+        .form-group
+          .col-lg-10
+            input#inputName.form-control(type='text', placeholder='Ready to discover?',name='myinput')
+        p
+          button.btn.btn-primary.btn-lg(href='about') Start

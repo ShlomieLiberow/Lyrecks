@@ -11,7 +11,10 @@ var home = require('./routes/home');
 var about = require('./routes/about');
 var app = express();
 var rest = require('restler');
+var open = require('open');
 var router = express.Router();  
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,42 +27,57 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 app.get('/', home.home);
-//app.get('/home', home.home);
+app.get('/home', home.home);
 //app.get('/about', about.about);
 
+var input_content = [];
 
-app.get('/about', function(req, res) {
+app.post('/', function(req, res)
+{
+    console.log(req.body.myinput);
+    // res.json({ message: 'hooray! welcome to our api!' }); 
+    if(typeof req.body.myinput != "undefined")
+    {   
+        var input = req.body.myinput;
+        console.log("asdf " + input);
+        input_content = input.toString().split(',');
+    
+    console.log("finised 1");
+    open('/routes/about');
+
     //res.json({ message: 'hooray! welcome to our api!' }); 
-    var first_response = res;
-    var track_name = "Drone";
-    var art_name = "Muse";
-    //console.log("got here 2");
+    //console.log("input_content " + input_content);
+    var track_name = input_content[1];
+    var art_name =  input_content[0];
+    console.log(track_name +  " .. got here 2 .. " + art_name);
+
     rest.json('http://api.musixmatch.com/ws/1.1/track.search?q=' + track_name + '&q_artist=' + art_name + ' &f_has_lyrics=1&apikey=36238a5e7169c1acedc538f970fffb34')
     .on('complete', function(response_track) { 
-    //console.log("got here 1");
+    
+    console.log("got here 1");
     //console.log(response); 
+    //console.log(req.body + "");
     var json_track_info = JSON.parse(response_track);
     //console.log(json_track_info.message.body.track_list[0].track_rating);
     //var second_response = "doing something" . reponse;
     var track_id = json_track_info.message.body.track_list[0].track.track_id;
-    // console.log(json_track_info);
+    //console.log(json_track_info);
 
     rest.json('http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=' + track_id + '&apikey=36238a5e7169c1acedc538f970fffb34')
             .on('complete', function(response_2){
             var lyrics = JSON.parse(response_2).message.body.lyrics.lyrics_body;
-            console.log("ok");            
-            console.log(lyrics);
+            console.log("ok");    
+            var lyrics_clear = lyrics.split("*");        
+            console.log(lyrics_clear);
             //first_response.send("" + lyrics);
-            res.render('about.jade', {lyrics: lyrics});
+            res.render('about.jade', {lyrics: lyrics_clear});
             console.log("here");
         });
-    })
-    .on('error', function(err) { 
+    }).on('error', function(err) { 
           console.log('An error occurred:' + err); 
-     });
+    });
+    }
 });
-
-
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -78,7 +96,7 @@ if (app.get('env') === 'development') {
             error: err
         });
     });
-}
+} 
 
 if (app.get('/') === 'development') {
     app.use(function(err, req, res, next) {
