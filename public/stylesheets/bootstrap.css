@@ -455,6 +455,8 @@ h4,
 }
 h5,
 .h5 {
+  color: turquoise;
+    line-height: inherit;
   font-size: 14px;
 }
 h6,
@@ -5923,7 +5925,7 @@ li:hover li
 
 li:hover a 
 {
-    background: #617F8A;
+    background: #2ebd59;
 }
 
 li:hover li a:hover 

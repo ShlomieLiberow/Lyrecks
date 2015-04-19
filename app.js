@@ -23,7 +23,7 @@ var watson = require('watson-developer-cloud');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
-//var my_text = "I am not the kind of girl Who should be rudely barging in on a white veil occasion But you are not the kind of boyWho should be marrying the wrong girlI sneak in and see your friendsAnd her snotty little family all dressed in pastelAnd she is yelling at a bridesmaidSomewhere back inside a roomWearing a gown shaped like a pastryThis is surely not what you thought it would beI lose myself in a daydreamWhere I stand and say[Chorus:]Don’t say Yes, run away nowI’ll meet you when you’re out of the church at the back doorDon’t wait or say a single vowYou need to hear me outAnd they said, Speak now.Fond gestures are exchangedAnd the organ starts to playA song that sounds like a death marchAnd I am hiding in the curtainsIt seems that I was uninvited by your lovely bride-to-beShe floats down the aisle like a pageant queenBut I know you wish it was me,You wish it was me,Don’t you?[Chorus:]Don’t say Yes, run away now,I’ll meet you when you’re out of the church at the back door.Don’t wait or say a single vow,You need to hear me out,And they said, Speak now.Don’t say Yes, run away now,I’ll meet you when you’re out of the church at the back door.Don’t wait or say a single vow,Your time is running out,And they said, Speak now.Oh, la, laOh, ohSay a single vowI hear the preacher say, Speak now or forever hold your peace.There’s the silence, there’s my last chance.I stand up with shaky hands, all eyes on me.Horrified looks from everyone in the roomBut I’m only looking at you.I am not the kind of girlWho should be rudely barging in on a white veil occasionBut you are not the kind of boyWho should be marrying the wrong girl.";
+var my_text = "I am not the kind of girl Who should be rudely barging in on a white veil occasion But you are not the kind of boyWho should be marrying the wrong girlI sneak in and see your friendsAnd her snotty little family all dressed in pastelAnd she is yelling at a bridesmaidSomewhere back inside a roomWearing a gown shaped like a pastryThis is surely not what you thought it would beI lose myself in a daydreamWhere I stand and say[Chorus:]Don’t say Yes, run away nowI’ll meet you when you’re out of the church at the back doorDon’t wait or say a single vowYou need to hear me outAnd they said, Speak now.Fond gestures are exchangedAnd the organ starts to playA song that sounds like a death marchAnd I am hiding in the curtainsIt seems that I was uninvited by your lovely bride-to-beShe floats down the aisle like a pageant queenBut I know you wish it was me,You wish it was me,Don’t you?[Chorus:]Don’t say Yes, run away now,I’ll meet you when you’re out of the church at the back door.Don’t wait or say a single vow,You need to hear me out,And they said, Speak now.Don’t say Yes, run away now,I’ll meet you when you’re out of the church at the back door.Don’t wait or say a single vow,Your time is running out,And they said, Speak now.Oh, la, laOh, ohSay a single vowI hear the preacher say, Speak now or forever hold your peace.There’s the silence, there’s my last chance.I stand up with shaky hands, all eyes on me.Horrified looks from everyone in the roomBut I’m only looking at you.I am not the kind of girlWho should be rudely barging in on a white veil occasionBut you are not the kind of boyWho should be marrying the wrong girl.";
 var my_text2 = "The summer's over, this town is closing. They're waving people out of the ocean. We have the feeling like we were floating. We never noticed where time was going. Do you remember when we first got here? The days were longer; the nights were hot here. Now, it's September; the engine's started. You're empty-handed and heavy-hearted. But just remember on the way home (ooh ooh ooh) That you were never meant to feel alone. It takes a little while, but you'd be fine: Another good time coming down the line. You'll go back to love that's waiting. I'll unpack in a rented room. How's that life you swear you're hating? Grass is greener: that makes two. But just remember on the way home (ooh ooh ooh) That you were never meant to feel alone. Just look me up; get back on the bus. I'll see you next week if you need my trust. Life ain't short, but it sure is small. You get forever but nobody at all. Life ain't short, but it sure is small. You get forever but nobody at all. It don't come often, and it don't stay long. (Ooh, ooh, ooh, ooh) But just remember on the way home (ooh ooh ooh) That you don't ever have to feel alone. Just stay on the run; get off the grid. Hide yourself out like you know that I did, And if you might find that your running is done, A little bit of Heaven never hurt no one.";
 var personality_insights = watson.personality_insights({
   api_key: 'ZTI5ZTBjZTgtMmE0YS00ODNkLWIwNTgtZTNiYWI5Njg1MGU4OjE3d01pYlRWUDVaNg',
@@ -33,7 +33,6 @@ var personality_insights = watson.personality_insights({
 
 var selection1 = new Array(15);
 var selection2 = new Array(15);
-var selectionStr = ['Openness', 'Openness - personality', 'Achievement striving', 'Prone to worry', 'Uncompromising', 'Susceptible to stress' ];
 
 // important stuff going on here please dont touch
 var diff;
@@ -70,18 +69,29 @@ var art_name;
 
 app.get('/attributes', function(req, res)
 {
-    console.log(req.param("name"));
+    //console.log(req.param("name"));
     var txt1 = req.param("name") + "\n  ";
 
     var txt2 = art_name + "\n";
-    res.render('attributes.jade', {first: txt1, second: txt2});
-    console.log("here");
+    var numbY = Math.random(5);
+    var numbX = Math.random(0,5);
+    while(numbX === numbY)
+        numbX = Math.random(0,5);
+
+    var selectionStr = ['Openness', 'Openness - personality', 'Self-conscious', 'Achievement striving', 'Prone to worry', 'Uncompromising', 'Susceptible to stress' ];
+    //console.log(selectionStr[0]);
+
+    var txt11 = "They are similar for: " + selectionStr[2];
+    var txt22 = "They are different for: " + selectionStr[3];
+
+    res.render('attributes.jade', {first: txt1, second: txt2, firstTxt: txt11, secondTxt: txt22});
+    //console.log("here");
 
 
-personality_insights.profile ({ text: ""+lyrics_clear + lyrics_clear }, function (err, response) {
+personality_insights.profile ({ text: my_text }, function (err, response) {
   if (err)
-    console.log('error:', err);
-  else
+    //console.log('error:', err);
+  // else
     //console.log(JSON.stringify(response, null, 2));
 
    
@@ -123,11 +133,11 @@ selection1[5] = response.tree.children[0].children[0].children[0].children[4].pe
 });
 
 
-console.log(lyrics_clear + "");
-personality_insights.profile ({ text: my_text2 + lyrics_clear + lyrics_clear}, function (err, response) {
+
+personality_insights.profile ({ text: my_text2 }, function (err, response) {
   if (err)
-    console.log('error:', err);
-  else
+    //console.log('error:', err);
+  
     //console.log(JSON.stringify(response, null, 2));
 
    
@@ -144,10 +154,11 @@ simi = 0;
 diff = 1000;
 for(var i =0; i < selection1.length; i++)
 {
+    console.log(selection1[i] + "");
     for(var j =0; j < selection2.length; j++)
     {
         var delta = Math.abs(selection1[i] - selection2[j]);
-        console.log(delta + "");
+        //console.log(delta + "");
         if(diff < delta)
         {
             diffID = i;
@@ -160,8 +171,8 @@ for(var i =0; i < selection1.length; i++)
         }
     }
 }
-console.log(simiID + " " + diffID);
-console.log("similar in : " + selectionStr[simiID] + "  and diffrenet in " + selectionStr[diffID]);
+//console.log(simiID + " " + diffID);
+//console.log("similar in : " + selectionStr[simiID] + "  and diffrenet in " + selectionStr[diffID]);
 
 // console.log(selection5 + "  Openness B");
 // console.log(selection6 + "  Openness - personality B");
@@ -182,10 +193,10 @@ app.post('/', function(req, res)
     if(typeof req.body.myinput != "undefined")
     {   
         var input = req.body.myinput;
-        console.log("asdf " + input);
+        //console.log("asdf " + input);
         if(input.indexOf(',') > -1)
         {
-            console.log('aahahah');
+            //console.log('aahahah');
             input_content = input.toString().split(',');
             track_name = input_content[1];
             art_name =  input_content[0];
@@ -197,7 +208,7 @@ app.post('/', function(req, res)
     //res.json({ message: 'hooray! welcome to our api!' }); 
     //console.log("input_content " + input_content);
     
-    console.log(track_name +  " .. got here 2 .. " + art_name);
+    //console.log(track_name +  " .. got here 2 .. " + art_name);
 
     var callAPI = 'http://api.musixmatch.com/ws/1.1/track.search?q=';
 
@@ -212,7 +223,7 @@ app.post('/', function(req, res)
     rest.json(callAPI + '&f_has_lyrics=1&apikey=36238a5e7169c1acedc538f970fffb34')
     .on('complete', function(response_track) { 
     
-    console.log("got here 1");
+    //console.log("got here 1");
     //console.log(response); 
     //console.log(req.body + "");
     var json_track_info = JSON.parse(response_track);
@@ -224,9 +235,9 @@ app.post('/', function(req, res)
     rest.json('http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=' + track_id + '&apikey=36238a5e7169c1acedc538f970fffb34')
             .on('complete', function(response_2){
             var lyrics = JSON.parse(response_2).message.body.lyrics.lyrics_body;
-            console.log("ok");    
+            //console.log("ok");    
             lyrics_clear = lyrics.split("*");        
-            console.log(lyrics_clear);
+            //console.log(lyrics_clear);
 
             //first_response.send("" + lyrics);
             var name ;
@@ -241,24 +252,29 @@ app.post('/', function(req, res)
                 }
                 else    
                     name = art_name;
+                console.log(myarray[i][0].toLowerCase() + " " + name.toLowerCase());
 
-                if(myarray[i][0].toLowerCase().indexOf(name))
+                
+                if(myarray[i][0].toLowerCase().indexOf(name.toLowerCase()) > -1)
                 {
                     summary = myarray[i][1];
                     var index = 2;
-                    while(myarray[i][index] != null)
+                    while(myarray[i][index] != null )
                     {
+                        console.log("add  " + i + " "+  index + " " + myarray[i][index]);
                         data.add(myarray[i][index]);
                         index++;
                     }
+
                 }
             }
-            
+            summary = summary.split(".").join("\n");
+            summary = summary.split(",").join("\n");
             res.render('about.jade', {lyrics: lyrics_clear, data: data, summary: summary});
-            console.log("here");
+            //console.log("here");
         });
     }).on('error', function(err) { 
-          console.log('An error occurred:' + err); 
+          //console.log('An error occurred:' + err); 
     });
     }
 });
@@ -307,7 +323,7 @@ app.listen(port);
 var myarray=new Array(10)
 
 for (i=0; i <14; i++)
-    myarray[i]=new Array(10)
+    myarray[i]=new Array(15);
 
 myarray[0][0]="Rihanna";
 myarray[0][1]="You are explosive, easily rattled and can be perceived as shortsighted. You are excitement-seeking: you are excited by taking risks and feel bored without lots of action going on. You are susceptible to stress: you are easily overwhelmed in stressful situations. And you are emotionally aware: you are aware of your feelings and how to express them. Your choices are driven by a desire for belongingness. You are relatively unconcerned with tradition: you care more about making your own path than following what others have done. You consider helping others to guide a large part of what you do: you think it is important to take care of the people around you.";

@@ -31,9 +31,11 @@ html
           each name in locals.data
             li 
               a(href="/attributes?name=#{name}") = #{name}
-    .panel.panel-default
-      .panel-body
-        | #{locals.lyrics}
-    .panel.panel-default
-      .panel-body
-        | #{locals.summary}
+      
+  .panel.panel-default
+    .panel-body
+     h5
+       | #{locals.summary}
+       br
+     | #{locals.lyrics}
+
