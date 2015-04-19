@@ -8,7 +8,7 @@ html
     link(href='stylesheets/bootstrap.css', rel='stylesheet', media='screen')
     link(href='mysite.css', rel='stylesheet', media='screen')
     script(type='text/javascript', src='javascripts/jquery.js')
-    //script(type='text/javascript', src='stylesheets/bootstrap.min.js')
+    script(type='text/javascript', src='stylesheets/bootstrap.min.js')
   body
     //
        Navigation Bar 
@@ -24,20 +24,14 @@ html
         ul.nav.navbar-nav.navbar-right
           li
             a(href='home') Home 
-    //
-       Navigation Bar 
+      Navigation Bar 
+       //#{locals}
+      li Match:
+        ul
+          each name in locals.data
+            li 
+              a(href="/attributes?name=#{name}") = #{name}
     .panel.panel-default
       .panel-body
         | #{locals.lyrics}
-    .col-lg-8
-      form.form-horizontal(action='/about',method='POST')
-        fieldset
-          legend Pay Here
-          .form-group
-            label.col-lg-2.control-label(for='inputEmail') Email
-            .col-lg-10
-              input#inputEmail.form-control(type='text', placeholder='Email')
-          .form-group
-            .col-lg-10.col-lg-offset-2
-              button.btn.btn-default Cancel
-              button.btn.btn-primary(type='submit') Submit
+    

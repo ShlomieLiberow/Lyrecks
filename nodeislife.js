@@ -79,11 +79,11 @@ personality_insights.profile ({ text: my_text2 }, function (err, response) {
 
    
 //var gill = JSON.stringify(response, null, 2);
-selection5 = response.tree.children[0].children[0].children[0].percentage;
+selection5 = Math.floor(response.tree.children[0].children[0].children[0].percentage * 100);
 selection6 = response.tree.children[0].children[0].children[0].children[0].percentage;
 selection7 = response.tree.children[0].children[0].children[0].children[1].percentage;
 selection8 = response.tree.children[0].children[0].children[0].children[2].percentage;
-selection9 = response.tree.children[0].children[0].children[0].children[3].percentage;
+selection9 = Math.floor(response.tree.children[0].children[0].children[0].children[3].percentage * 100);
 selection10 = response.tree.children[0].children[0].children[0].children[4].percentage;
 
 console.log(selection5 + "  Openness B");
