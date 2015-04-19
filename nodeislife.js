@@ -9,6 +9,24 @@ var personality_insights = watson.personality_insights({
   version: 'v2'
 });
 ;
+
+var selection1 
+var selection2 
+var selection3 
+var selection4 
+var selection11
+var selection12
+
+var selection5
+var selection6
+var selection7
+var selection8
+var selection9
+var selection10;
+
+
+
+
 personality_insights.profile ({ text: my_text }, function (err, response) {
   if (err)
     console.log('error:', err);
@@ -17,8 +35,21 @@ personality_insights.profile ({ text: my_text }, function (err, response) {
 
    
 //var gill = JSON.stringify(response, null, 2);
-var selection = response.tree.children[0].children[0].children[0].percentage;
-console.log(selection + "  Openness");
+selection1 = response.tree.children[0].children[0].children[0].percentage;
+selection2 = response.tree.children[0].children[0].children[0].children[0].percentage;
+selection3 = response.tree.children[0].children[0].children[0].children[1].percentage;
+selection4 = response.tree.children[0].children[0].children[0].children[2].percentage;
+selection11 = response.tree.children[0].children[0].children[0].children[3].percentage;
+selection12 = response.tree.children[0].children[0].children[0].children[4].percentage;
+
+
+console.log(selection1 + "  Openness A");
+console.log(selection2 + "  Openness - personality A");
+console.log(selection3 + "  Achievement striving A");
+console.log(selection4 + "  Prone to worry A");
+console.log(selection11 + "  Uncompromising A");
+console.log(selection12 + "  Susceptible to stress A");
+
 
 
     /*var path = 'C:/Users/Shlomie/Desktop/MLH\ Manchester/Watson/Lyrecks/file.txt',
@@ -37,6 +68,7 @@ console.log(selection + "  Openness");
 	});
 */
 });
+
 
 
 personality_insights.profile ({ text: my_text2 }, function (err, response) {
@@ -47,33 +79,37 @@ personality_insights.profile ({ text: my_text2 }, function (err, response) {
 
    
 //var gill = JSON.stringify(response, null, 2);
-var selection2 = response.tree.children[0].children[0].children[0].percentage;
-var selection3 = response.tree.children[0].children[0].children[0].children[0].percentage;
-var selection4 = response.tree.children[0].children[0].children[0].children[1].percentage;
-var selection5 = response.tree.children[0].children[0].children[0].children[2].percentage;
+selection5 = response.tree.children[0].children[0].children[0].percentage;
+selection6 = response.tree.children[0].children[0].children[0].children[0].percentage;
+selection7 = response.tree.children[0].children[0].children[0].children[1].percentage;
+selection8 = response.tree.children[0].children[0].children[0].children[2].percentage;
+selection9 = response.tree.children[0].children[0].children[0].children[3].percentage;
+selection10 = response.tree.children[0].children[0].children[0].children[4].percentage;
+
+console.log(selection5 + "  Openness B");
+console.log(selection6 + "  Openness - personality B");
+console.log(selection7 + "  Achievement striving B");
+console.log(selection8 + "  Prone to worry B");
+console.log(selection9 + "  Uncompromising B");
+console.log(selection10 + "  Susceptible to stress B");
 
 
-console.log(selection2 + "  Openness B");
-console.log(selection3 + "  Openness - personality B");
-console.log(selection4 + "  Achievement striving");
-console.log(selection5 + "  Prone to worry");
 
-
-
-
-    /*var path = 'C:/Users/Shlomie/Desktop/MLH\ Manchester/Watson/Lyrecks/file.txt',
-	buffer = new Buffer(gill);
-	fs.open(path, 'w', function(err, fd) {
-	    if (err) {
-	        throw 'error opening file: ' + err;
-	    } else {
-	        fs.write(fd, buffer, 0, buffer.length, null, function(err) {
-	            if (err) throw 'error writing file: ' + err;
-	            fs.close(fd, function() {
-	                console.log('file written');
-	            })
-	        });
-	    }
-	});
-*/
 });
+
+
+
+var myarray=new Array(5)
+for (i=0; i <5; i++)
+    myarray[i]=new Array(5)
+
+myarray[0][0]=selection1
+myarray[0][1]=selection2
+myarray[1][0]=selection3
+myarray[1][1]=selection4
+myarray[2][0]=selection5
+myarray[2][1]=selection6
+myarray[3][0]=selection7
+myarray[3][1]=selection8
+myarray[4][0]=selection9
+myarray[4][1]=selection10
