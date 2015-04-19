@@ -14,7 +14,7 @@ var router = express.Router();
 
 exports.about = function(req,res){
 	console.log('herer 33');	
-	res.render('about'); 
+	//res.render('about'); 
 }
 
 
@@ -36,4 +36,4 @@ exports.about = function(req,res){
 //         //selection.add
 //     }
 // });
-console.log('ok');
+//console.log('ok');

@@ -5930,3 +5930,16 @@ li:hover li a:hover
 {
     background: #95A9B1;
 }
+
+.pfirst
+{
+    text-align: left;
+}
+
+.psecond
+{
+  text-align: right;
+}
+
+
+

@@ -16,7 +16,7 @@ html
         .navbar-header
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
             span.icon-bar
-            span.icon-bar
+            span.icon-bar 
             span.icon-bar
           a.navbar-brand(href='#')
             | Lyreks® 
@@ -25,12 +25,18 @@ html
             li.active
               a(href='#') Home
       //
-        Navigation Bar 
     .jumbotron
-      legend Ready to discover?
-      form.form-horizontal(action='/',method='POST')
-        .form-group
-          .col-lg-10
-            input#inputName.form-control(type='text', placeholder='ex. Beatles, let it be',name='myinput')
-        p
-          button.btn.btn-primary.btn-lg(href='about') Start
+      legend And the results are ...
+      .form-group
+      .panel.panel-default
+      .panel-body
+          .form-group
+          h3
+            | #{locals.first}
+          p
+            | #{locals.firstTxt}
+          h3
+            | #{locals.second}
+          p
+            | #{locals.secondTxt}
+        

@@ -6,17 +6,13 @@ var router = express.Router();
 
 
 exports.about = function(req,res){
-	console.log('herer 33');	
+//	console.log('herer 33');	
 	res.render('attributes'); 
-	console.log('AHHAHasdfasdfasdfasdfA ' + query);
+//	console.log('AHHAHasdfasdfasdfasdfA ' + query);
 }
 
-app.get(function(req, res){
-	console.log('AHHAHA ' + query);
-	var url = require('url');
-	var url_parts = url.parse(request.url, true);
-	var query = url_parts.query;
-	console.log('AHHAHA ' + query);
-	res.render('attributes'); 
-	
+app.get('/', function(req, res){
+	req.param("name");
+//	console.log('AHHAHA ' + req.query.name);
+//	    console.log('from app.js');
 });
