@@ -232,6 +232,7 @@ th {
     background: #fff !important;
   }
   .navbar {
+    /*color: #2ebd59;*/
     display: none;
   }
   .table td,
@@ -269,9 +270,9 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Droid Sans", "Walkway", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.42857143;
+  line-height: 3;
   color: #888888;
   background-color: #060606;
 }
@@ -455,8 +456,6 @@ h4,
 }
 h5,
 .h5 {
-  color: turquoise;
-    line-height: inherit;
   font-size: 14px;
 }
 h6,
@@ -3939,7 +3938,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-color: #000000;
 }
 .navbar-default .navbar-brand {
-  color: #ffffff;
+  color: #2ebd59;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -3995,7 +3994,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #ffffff;
+    color: #FF0000;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
@@ -5874,6 +5873,11 @@ legend {
   position: fixed;
 }
 
+li
+{
+    color: #2ebd59;
+}
+
 ul
 {
     font-family: Arial, Verdana;
@@ -5895,6 +5899,11 @@ li ul
     display: none;
 }
 
+li li a
+{
+    background: #060606;
+}
+
 ul li a 
 {
     display: block;
@@ -5902,46 +5911,37 @@ ul li a
     color: #ffffff;
     border-top: 1px solid #ffffff;
     padding: 5px 15px 5px 15px;
-    background: #2C5463;
+    background: #060606;
     margin-left: 1px;
     white-space: nowrap;
 }
 
 ul li a:hover 
 {
-    background: #617F8A;
+    color: #2ebd59;
+    background: #060606;
 }
 li:hover ul 
 {
+  color: #2ebd59;
     display: block;
     position: absolute;
 }
 
 li:hover li
 {
+  color: #2ebd59;
     float: none;
     font-size: 11px;
 }
 
 li:hover a 
 {
-    background: #2ebd59;
+    background: #060606;
 }
 
 li:hover li a:hover 
 {
-    background: #95A9B1;
+    color: #2ebd59;
+    background: #060606;
 }
-
-.pfirst
-{
-    text-align: left;
-}
-
-.psecond
-{
-  text-align: right;
-}
-
-
-

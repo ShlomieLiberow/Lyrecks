@@ -252,9 +252,9 @@ app.post('/', function(req, res)
                 }
                 else    
                     name = art_name;
-                console.log(myarray[i][0].toLowerCase() + " " + name.toLowerCase());
+                // /console.log(myarray[i][0].toLowerCase() + " " + name.toLowerCase());
 
-                
+
                 if(myarray[i][0].toLowerCase().indexOf(name.toLowerCase()) > -1)
                 {
                     summary = myarray[i][1];
