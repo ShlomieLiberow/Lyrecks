@@ -97,10 +97,10 @@ console.log(selection10 + "  Susceptible to stress B");
 });
 
 
-
-var myarray=new Array(5)
-for (i=0; i <5; i++)
-    myarray[i]=new Array(5)
+// 10 and 14 correct? As opposed to 5
+var myarray=new Array(10)
+for (i=0; i <14; i++)
+    myarray[i]=new Array(10)
 
 myarray[0][0]="Rihanna";
 myarray[0][1]="You are explosive, easily rattled and can be perceived as shortsighted. You are excitement-seeking: you are excited by taking risks and feel bored without lots of action going on. You are susceptible to stress: you are easily overwhelmed in stressful situations. And you are emotionally aware: you are aware of your feelings and how to express them. Your choices are driven by a desire for belongingness. You are relatively unconcerned with tradition: you care more about making your own path than following what others have done. You consider helping others to guide a large part of what you do: you think it is important to take care of the people around you.";
