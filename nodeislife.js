@@ -1,4 +1,4 @@
-var watson = require('watson-developer-cloud');
+..var watson = require('watson-developer-cloud');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
@@ -103,13 +103,14 @@ var myarray=new Array(5)
 for (i=0; i <5; i++)
     myarray[i]=new Array(5)
 
-myarray[0][0]=selection1
-myarray[0][1]=selection2
-myarray[1][0]=selection3
-myarray[1][1]=selection4
-myarray[2][0]=selection5
-myarray[2][1]=selection6
-myarray[3][0]=selection7
-myarray[3][1]=selection8
-myarray[4][0]=selection9
-myarray[4][1]=selection10
+myarray[0][0]="Rihanna";
+myarray[0][1]="You are explosive, easily rattled and can be perceived as shortsighted. You are excitement-seeking: you are excited by taking risks and feel bored without lots of action going on. You are susceptible to stress: you are easily overwhelmed in stressful situations. And you are emotionally aware: you are aware of your feelings and how to express them. Your choices are driven by a desire for belongingness. You are relatively unconcerned with tradition: you care more about making your own path than following what others have done. You consider helping others to guide a large part of what you do: you think it is important to take care of the people around you.";
+myarray[0][2]="Jay Z";
+myarray[0][3]=Chris Brown
+myarray[0][4]=Omarion Grandberry
+myarray[0][5]=Wilmer Valderrama
+myarray[0][6]=Justin Timberlake
+myarray[0][7]=Josh Henderson
+myarray[0][8]=Aubrey Graham
+myarray[0][9]=Travis Barker
+
