@@ -1,4 +1,4 @@
-var watson = require('watson-developer-cloud');
+..var watson = require('watson-developer-cloud');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
@@ -10,21 +10,15 @@ var personality_insights = watson.personality_insights({
 });
 ;
 
-var selection1 
-var selection2 
-var selection3 
-var selection4 
-var selection11
-var selection12
+var selection1 = new Array(15);
+var selection2 = new Array(15);
+var selectionStr = ['Openness', 'Openness - personality', 'Achievement striving', 'Prone to worry', 'Uncompromising', 'Susceptible to stress' ];
 
-var selection5
-var selection6
-var selection7
-var selection8
-var selection9
-var selection10;
-
-
+// important stuff going on here please dont touch
+var diff;
+var diffStr;
+var simi; 
+var simiID; 
 
 
 personality_insights.profile ({ text: my_text }, function (err, response) {
@@ -35,37 +29,39 @@ personality_insights.profile ({ text: my_text }, function (err, response) {
 
    
 //var gill = JSON.stringify(response, null, 2);
-selection1 = response.tree.children[0].children[0].children[0].percentage;
-selection2 = response.tree.children[0].children[0].children[0].children[0].percentage;
-selection3 = response.tree.children[0].children[0].children[0].children[1].percentage;
-selection4 = response.tree.children[0].children[0].children[0].children[2].percentage;
-selection11 = response.tree.children[0].children[0].children[0].children[3].percentage;
-selection12 = response.tree.children[0].children[0].children[0].children[4].percentage;
 
 
-console.log(selection1 + "  Openness A");
-console.log(selection2 + "  Openness - personality A");
-console.log(selection3 + "  Achievement striving A");
-console.log(selection4 + "  Prone to worry A");
-console.log(selection11 + "  Uncompromising A");
-console.log(selection12 + "  Susceptible to stress A");
+selection1[0] = response.tree.children[0].children[0].children[0].percentage;
+selection1[1] = response.tree.children[0].children[0].children[0].children[0].percentage;
+selection1[2] = response.tree.children[0].children[0].children[0].children[1].percentage;
+selection1[3] = response.tree.children[0].children[0].children[0].children[2].percentage;
+selection1[4] = response.tree.children[0].children[0].children[0].children[3].percentage;
+selection1[5] = response.tree.children[0].children[0].children[0].children[4].percentage;
+
+
+// console.log(selection1 + "  Openness A");
+// console.log(selection2 + "  Openness - personality A");
+// console.log(selection3 + "  Achievement striving A");
+// console.log(selection4 + "  Prone to worry A");
+// console.log(selection11 + "  Uncompromising A");
+// console.log(selection12 + "  Susceptible to stress A");
 
 
 
     /*var path = 'C:/Users/Shlomie/Desktop/MLH\ Manchester/Watson/Lyrecks/file.txt',
-  buffer = new Buffer(gill);
-  fs.open(path, 'w', function(err, fd) {
-      if (err) {
-          throw 'error opening file: ' + err;
-      } else {
-          fs.write(fd, buffer, 0, buffer.length, null, function(err) {
-              if (err) throw 'error writing file: ' + err;
-              fs.close(fd, function() {
-                  console.log('file written');
-              })
-          });
-      }
-  });
+	buffer = new Buffer(gill);
+	fs.open(path, 'w', function(err, fd) {
+	    if (err) {
+	        throw 'error opening file: ' + err;
+	    } else {
+	        fs.write(fd, buffer, 0, buffer.length, null, function(err) {
+	            if (err) throw 'error writing file: ' + err;
+	            fs.close(fd, function() {
+	                console.log('file written');
+	            })
+	        });
+	    }
+	});
 */
 });
 
@@ -79,37 +75,40 @@ personality_insights.profile ({ text: my_text2 }, function (err, response) {
 
    
 //var gill = JSON.stringify(response, null, 2);
-selection5 = response.tree.children[0].children[0].children[0].percentage;
-selection6 = response.tree.children[0].children[0].children[0].children[0].percentage;
-selection7 = response.tree.children[0].children[0].children[0].children[1].percentage;
-selection8 = response.tree.children[0].children[0].children[0].children[2].percentage;
-selection9 = response.tree.children[0].children[0].children[0].children[3].percentage;
-selection10 = response.tree.children[0].children[0].children[0].children[4].percentage;
+selection2[0] = Math.floor(response.tree.children[0].children[0].children[0].percentage * 100);
+selection2[1] = Math.floor( response.tree.children[0].children[0].children[0].children[0].percentage* 100);
+selection2[2] = Math.floor( response.tree.children[0].children[0].children[0].children[1].percentage* 100);
+selection2[3] = Math.floor( response.tree.children[0].children[0].children[0].children[2].percentage* 100);
+selection2[4] = Math.floor(response.tree.children[0].children[0].children[0].children[3].percentage * 100);
+selection2[5] = Math.floor( response.tree.children[0].children[0].children[0].children[4].percentage* 100);
 
-console.log(selection5 + "  Openness B");
-console.log(selection6 + "  Openness - personality B");
-console.log(selection7 + "  Achievement striving B");
-console.log(selection8 + "  Prone to worry B");
-console.log(selection9 + "  Uncompromising B");
-console.log(selection10 + "  Susceptible to stress B");
+for(var i =0; i < selection1.length: i++)
+{
+	for(var j =0; j < selection2.length: j++)
+	{
+		var delta = Math.abs(selection1[i] - selection2[j]);
+		if(diff < delta)
+		{
+			diffID = i;
+			diff = delta;
+		}
+		if(simi > delta) 
+		{
+			simi = delta;
+			simiID = i;
+		}
+	}
+}
+console.log("similar in : " + selectionStr[simiID] + "  and diffrenet in " + selectionStr[diffID])
 
-
+// console.log(selection5 + "  Openness B");
+// console.log(selection6 + "  Openness - personality B");
+// console.log(selection7 + "  Achievement striving B");
+// console.log(selection8 + "  Prone to worry B");
+// console.log(selection9 + "  Uncompromising B");
+// console.log(selection10 + "  Susceptible to stress B");
 
 });
 
 
-
-var myarray=new Array(5)
-for (i=0; i <5; i++)
-    myarray[i]=new Array(5)
-
-myarray[0][0]=selection1
-myarray[0][1]=selection2
-myarray[1][0]=selection3
-myarray[1][1]=selection4
-myarray[2][0]=selection5
-myarray[2][1]=selection6
-myarray[3][0]=selection7
-myarray[3][1]=selection8
-myarray[4][0]=selection9
-myarray[4][1]=selection10
+// 10 and 14 correct? As opposed to 5
