@@ -205,7 +205,6 @@ app.post('/', function(req, res)
     //console.log("finised 1");
     //open('/routes/about');
 
-    //res.json({ message: 'hooray! welcome to our api!' }); 
     //console.log("input_content " + input_content);
     
     //console.log(track_name +  " .. got here 2 .. " + art_name);
@@ -227,8 +226,6 @@ app.post('/', function(req, res)
     //console.log(response); 
     //console.log(req.body + "");
     var json_track_info = JSON.parse(response_track);
-    //console.log(json_track_info.message.body.track_list[0].track_rating);
-    //var second_response = "doing something" . reponse;
     var track_id = json_track_info.message.body.track_list[0].track.track_id;
 
     //console.log(json_track_info);
@@ -321,7 +318,7 @@ var port = process.env.PORT || 3000;
 app.listen(port);
 
 var myarray=new Array(10)
-
+//hard coded for demo as import was playing up
 for (i=0; i <14; i++)
     myarray[i]=new Array(15);
 
